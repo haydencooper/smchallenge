@@ -11,8 +11,8 @@ let jiraIssues = [
 // create issue
 app.post('/jiraIssues', (req, res) => { // define endpoint for POST requests
     const newIssue = req.body; // extract new issue from request body
-    jira_issues.push(newIssue); // add new issue to array
-    console.log(newIssue); // log new issue
+    jiraIssues.push(newIssue); // add new issue to array
+    console.log('created new issue: ' + JSON.stringify(newIssue)); // log new issue
     res.status(201).send(newIssue); // send 201 status code meaning issue was sucessfully created
 });
 
@@ -44,7 +44,7 @@ app.delete('/jiraIssues/:id', (req, res) => {
 
 // read/output all issues
 app.get('/jiraIssues', (req, res) => {
-    res.json(jira_issues); // output all current jira issues in array
+    res.json(jiraIssues); // output all current jira issues in array
 });
 
 app.listen(port, () => { // start server on port 3000
